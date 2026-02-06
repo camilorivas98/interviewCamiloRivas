@@ -1,0 +1,45 @@
+relationship 47fd143e-6187-4c9d-8948-8523ed5efb88
+	joinOnDateBehavior: datePartOnly
+	fromColumn: nyc_flights_fixed.time_hour
+	toColumn: LocalDateTable_6dd7dec3-37aa-48fa-a8d7-2b20be6f23e1.Date
+
+relationship AutoDetected_f34adf5f-8dd3-4cee-ba3d-b8809a06fe2c
+	fromColumn: nyc_flights_fixed.tailnum
+	toColumn: nyc_planes.tailnum
+
+relationship 62b05d10-457b-b58a-f39b-5a2e5e17bf89
+	fromColumn: nyc_flights_fixed.carrier
+	toColumn: nyc_airlines.Carrier
+
+relationship c5e8d3ae-9ecb-7c7d-2d50-0aa141274031
+	fromColumn: nyc_flights_fixed.origin
+	toColumn: nyc_airports.faa
+
+relationship 00d38105-04db-b8f4-5f6f-5f34259993ad
+	isActive: false
+	fromColumn: nyc_flights_fixed.dest
+	toColumn: nyc_airports.faa
+
+relationship ba9d8cd8-76d5-449c-830f-4e956bbc3de8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: nyc_weather.time_hour
+	toColumn: LocalDateTable_2c9756fd-8a1b-4d56-b1eb-d349942a871a.Date
+
+relationship 9c44f8eb-93c9-6925-aa2a-7d83d25d459d
+	isActive: false
+	fromColumn: nyc_weather.origin
+	toColumn: nyc_airports.faa
+
+relationship 0968b7c4-12ac-4265-9a2f-d7c7a7aa454f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.Date
+	toColumn: LocalDateTable_cf83bcf4-baea-4c8d-880c-fd5ac56815e8.Date
+
+relationship aae61a2c-993a-44f7-f0f3-18aebb299cd5
+	fromColumn: nyc_weather.'Weather Date'
+	toColumn: Calendar.Date
+
+relationship cc8fdece-2f3d-f03b-2416-778e6e4c505b
+	fromColumn: nyc_flights_fixed.'Flight Date'
+	toColumn: Calendar.Date
+

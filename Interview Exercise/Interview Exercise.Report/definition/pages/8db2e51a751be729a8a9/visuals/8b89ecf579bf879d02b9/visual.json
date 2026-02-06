@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "8b89ecf579bf879d02b9",
+  "position": {
+    "x": 0,
+    "y": 94.346504559270514,
+    "z": 0,
+    "height": 179.93920972644378,
+    "width": 216.89969604863222,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nyc_airlines"
+                    }
+                  },
+                  "Property": "Distinct Destinations"
+                }
+              },
+              "queryRef": "nyc_airlines.Distinc Destinations",
+              "nativeQueryRef": "Distinct Destinations"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nyc_airlines"
+                  }
+                },
+                "Property": "Distinct Destinations"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "a58a78a54684058eb636",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "nyc_airlines"
+              }
+            },
+            "Property": "Distinct Destinations"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

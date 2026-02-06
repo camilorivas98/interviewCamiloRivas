@@ -1,0 +1,106 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "4c4bf0e5412b859d6195",
+  "position": {
+    "x": 373.49544072948328,
+    "y": 323.89057750759878,
+    "z": 3000,
+    "height": 318.05471124620061,
+    "width": 203.28267477203647,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nyc_flights_fixed"
+                    }
+                  },
+                  "Property": "Month Name"
+                }
+              },
+              "queryRef": "nyc_flights_fixed.Month Name",
+              "nativeQueryRef": "Month Name",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nyc_flights_fixed"
+                    }
+                  },
+                  "Property": "Total Flights"
+                }
+              },
+              "queryRef": "nyc_flights_fixed.Total Flights",
+              "nativeQueryRef": "Total Flights"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nyc_flights_fixed"
+                  }
+                },
+                "Property": "Total Flights"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "415a4a457a360bfb4ff4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "nyc_flights_fixed"
+              }
+            },
+            "Property": "Month Name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "febd4225d54a10857f45",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "nyc_flights_fixed"
+              }
+            },
+            "Property": "Total Flights"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

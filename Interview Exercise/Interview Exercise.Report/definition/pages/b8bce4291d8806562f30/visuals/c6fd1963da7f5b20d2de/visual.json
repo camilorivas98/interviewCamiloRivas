@@ -1,0 +1,106 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "c6fd1963da7f5b20d2de",
+  "position": {
+    "x": 488.81889763779526,
+    "y": 18.477690288713909,
+    "z": 1,
+    "height": 340.997375328084,
+    "width": 475.38057742782149,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nyc_airlines"
+                    }
+                  },
+                  "Property": "Name"
+                }
+              },
+              "queryRef": "nyc_airlines.Name",
+              "nativeQueryRef": "Name",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nyc_flights_fixed"
+                    }
+                  },
+                  "Property": "Airline Rank by Seats"
+                }
+              },
+              "queryRef": "nyc_flights_fixed.Airline Rank by Seats",
+              "nativeQueryRef": "Airline Rank by Seats"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nyc_flights_fixed"
+                  }
+                },
+                "Property": "Airline Rank by Seats"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "bf4d4535138dadfa497d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "nyc_flights_fixed"
+              }
+            },
+            "Property": "Airline Rank by Seats"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6bc28c9d6feb78420466",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "nyc_airlines"
+              }
+            },
+            "Property": "Name"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

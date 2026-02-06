@@ -1,0 +1,101 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "c6ebd41e9183cf1ec9da",
+  "position": {
+    "x": 0,
+    "y": 323.89057750759878,
+    "z": 2000,
+    "height": 238.29787234042556,
+    "width": 355.01519756838906,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nyc_flights_fixed"
+                    }
+                  },
+                  "Property": "Order DoW"
+                }
+              },
+              "queryRef": "Sum(nyc_flights_fixed.Order DoW)",
+              "nativeQueryRef": "Order DoW"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nyc_flights_fixed"
+                    }
+                  },
+                  "Property": "DoW"
+                }
+              },
+              "queryRef": "nyc_flights_fixed.DoW",
+              "nativeQueryRef": "DoW"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nyc_flights_fixed"
+                    }
+                  },
+                  "Property": "Avg Destinations per Weekday"
+                }
+              },
+              "queryRef": "nyc_flights_fixed.Avg Destinations per Weekday",
+              "nativeQueryRef": "Avg Destinations per Weekday"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nyc_flights_fixed"
+                  }
+                },
+                "Property": "Order DoW"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "48.82067091383669D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(nyc_flights_fixed.Order DoW)"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

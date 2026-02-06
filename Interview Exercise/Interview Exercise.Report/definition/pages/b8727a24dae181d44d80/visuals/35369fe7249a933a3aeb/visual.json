@@ -1,0 +1,107 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "35369fe7249a933a3aeb",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 309.08136482939631,
+    "width": 312.44094488188978,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nyc_flights_fixed"
+                    }
+                  },
+                  "Property": "Month Name"
+                }
+              },
+              "queryRef": "nyc_flights_fixed.Month Name",
+              "nativeQueryRef": "Month",
+              "active": true,
+              "displayName": "Month"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nyc_flights_fixed"
+                    }
+                  },
+                  "Property": "Total Departure Delay"
+                }
+              },
+              "queryRef": "nyc_flights_fixed.Total Departure Delay",
+              "nativeQueryRef": "Total Departure Delay"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nyc_flights_fixed"
+                  }
+                },
+                "Property": "Total Departure Delay"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "6789d9983de9efe92fe3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "nyc_flights_fixed"
+              }
+            },
+            "Property": "Month Name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9a7f16831cf4d41dafd1",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "nyc_flights_fixed"
+              }
+            },
+            "Property": "Total Departure Delay"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

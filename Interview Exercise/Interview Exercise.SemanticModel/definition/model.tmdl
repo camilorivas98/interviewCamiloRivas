@@ -1,0 +1,32 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+/// Errors in queries that were loaded on 2/3/2026 9:04:10 AM.
+queryGroup 'Query Errors - 2/3/2026 9:04:10 AM'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["nyc_flights_fixed","nyc_airlines","nyc_airports","nyc_planes","nyc_weather"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table nyc_flights_fixed
+ref table DateTableTemplate_08b842f6-7b8e-49bf-aae8-60f2d71fc617
+ref table LocalDateTable_6dd7dec3-37aa-48fa-a8d7-2b20be6f23e1
+ref table nyc_airlines
+ref table nyc_airports
+ref table nyc_planes
+ref table nyc_weather
+ref table LocalDateTable_2c9756fd-8a1b-4d56-b1eb-d349942a871a
+ref table Calendar
+ref table LocalDateTable_cf83bcf4-baea-4c8d-880c-fd5ac56815e8
+
+ref cultureInfo en-US
+

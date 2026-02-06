@@ -1,0 +1,106 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "4c8dc4a589765c221fed",
+  "position": {
+    "x": 10.078740157480315,
+    "y": 0,
+    "z": 0,
+    "height": 520.73490813648289,
+    "width": 418.26771653543307,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nyc_planes"
+                    }
+                  },
+                  "Property": "manufacturer"
+                }
+              },
+              "queryRef": "nyc_planes.manufacturer",
+              "nativeQueryRef": "manufacturer",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nyc_flights_fixed"
+                    }
+                  },
+                  "Property": "Flights by Manufacturer"
+                }
+              },
+              "queryRef": "nyc_flights_fixed.Flights by Manufacturer",
+              "nativeQueryRef": "Flights by Manufacturer"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nyc_flights_fixed"
+                  }
+                },
+                "Property": "Flights by Manufacturer"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "5a44fe8d6ee59ddd538e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "nyc_planes"
+              }
+            },
+            "Property": "manufacturer"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b0c69d8c34ae52f6763a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "nyc_flights_fixed"
+              }
+            },
+            "Property": "Flights by Manufacturer"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

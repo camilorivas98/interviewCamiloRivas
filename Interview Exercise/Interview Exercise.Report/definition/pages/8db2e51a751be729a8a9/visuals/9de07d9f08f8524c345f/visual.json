@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "9de07d9f08f8524c345f",
+  "position": {
+    "x": 475.38057742782149,
+    "y": 114.22572178477689,
+    "z": 1000,
+    "height": 141.10236220472441,
+    "width": 307.40157480314957,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nyc_airlines"
+                    }
+                  },
+                  "Property": "Avg Distinct Destinations per Day"
+                }
+              },
+              "queryRef": "nyc_airlines.Avg Distinct Destinations per Day",
+              "nativeQueryRef": "Avg Distinct Destinations per Day"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nyc_airlines"
+                  }
+                },
+                "Property": "Avg Distinct Destinations per Day"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b1c3c9466db0ca308afe",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "nyc_airlines"
+              }
+            },
+            "Property": "Avg Distinct Destinations per Day"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

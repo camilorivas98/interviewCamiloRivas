@@ -1,0 +1,134 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "72093f61710a66b06e0f",
+  "position": {
+    "x": 0,
+    "y": 18.477690288713909,
+    "z": 0,
+    "height": 340.997375328084,
+    "width": 475.38057742782149,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nyc_airlines"
+                    }
+                  },
+                  "Property": "Name"
+                }
+              },
+              "queryRef": "nyc_airlines.Name",
+              "nativeQueryRef": "Name",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nyc_flights_fixed"
+                    }
+                  },
+                  "Property": "Total Flights"
+                }
+              },
+              "queryRef": "nyc_flights_fixed.Total Flights",
+              "nativeQueryRef": "Total Flights"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "nyc_flights_fixed"
+                    }
+                  },
+                  "Property": "Airline Ranking by Flights"
+                }
+              },
+              "queryRef": "nyc_flights_fixed.Airline Ranking by Flights",
+              "nativeQueryRef": "Airline Ranking by Flights"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "nyc_flights_fixed"
+                  }
+                },
+                "Property": "Airline Ranking by Flights"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "70a9f1599eeda41a9f46",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "nyc_airlines"
+              }
+            },
+            "Property": "Name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "17e52d25a4060943487e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "nyc_flights_fixed"
+              }
+            },
+            "Property": "Total Flights"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f8969b40ca9b465dbdd1",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "nyc_flights_fixed"
+              }
+            },
+            "Property": "Airline Ranking by Flights"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

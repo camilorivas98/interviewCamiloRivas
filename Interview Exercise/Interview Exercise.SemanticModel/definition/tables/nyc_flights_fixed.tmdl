@@ -1,0 +1,295 @@
+table nyc_flights_fixed
+	lineageTag: 0ac13cd4-1407-4b78-b78d-dabe24f797ce
+
+	measure 'Avg Destinations per Weekday' =
+			
+			AVERAGEX(
+			    VALUES(nyc_flights_fixed[DoW]),
+			    DISTINCTCOUNT(nyc_flights_fixed[dest])
+			)
+		lineageTag: 62d36878-e004-4957-8183-fece63c3905f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Flights' = COUNTROWS(nyc_flights_fixed)
+		formatString: 0
+		lineageTag: 842edb14-4e56-4b9c-b550-50fbe0c57dc7
+
+	measure 'Total Departure Delay' =
+			
+			SUM(nyc_flights_fixed[dep_delay])
+		formatString: 0
+		lineageTag: dd656293-17f1-4b6d-8895-c53d12c9a0e1
+
+	measure 'Airline Ranking by Flights' =
+			RANKX(
+			    ALL(nyc_airlines[Name]),
+			    [Total Flights],
+			    , DESC, Dense
+			)
+		formatString: 0
+		lineageTag: e731be2e-ebdc-464f-8812-fd5e594c1584
+
+	measure 'Avg Daily Seats per Airline' =
+			
+			AVERAGEX(
+			    VALUES(nyc_flights_fixed[Flight Date]),
+			    [Daily Seats]
+			)
+		lineageTag: 820c2226-3e11-45a3-ad90-2bd565ba10c4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Airline Rank by Seats' =
+			
+			RANKX(
+			    ALL(nyc_airlines[name]),
+			    [Avg Daily Seats per Airline],
+			    ,
+			    DESC,
+			    DENSE
+			)
+		formatString: 0
+		lineageTag: a7de0c75-39fc-46e0-85bb-37eee472cc47
+
+	measure 'Flights by Manufacturer' =
+			
+			COUNT(nyc_flights_fixed[tailnum])
+		formatString: 0
+		lineageTag: dd35673e-1564-495f-bf65-8d1b31314768
+
+	measure 'Avg Departure Delay' =
+			
+			AVERAGE(nyc_flights_fixed[dep_delay])
+		lineageTag: 892888ed-131b-4356-b5a3-8f55a86dee73
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column1
+		dataType: int64
+		formatString: 0
+		lineageTag: 2d8f7df9-216c-42e5-8977-cad9f76aec46
+		summarizeBy: sum
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: string
+		lineageTag: 019e7057-df0a-4faa-ab24-aac0557bf751
+		summarizeBy: none
+		sourceColumn: year
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: string
+		lineageTag: 424cfce0-ab75-4b15-b715-2c91f0b905b2
+		summarizeBy: none
+		sourceColumn: month
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column day
+		dataType: string
+		lineageTag: 4885ff75-5b50-4210-a1ad-5e7b8289058e
+		summarizeBy: none
+		sourceColumn: day
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column dep_time
+		dataType: int64
+		formatString: 0
+		lineageTag: 1927cb4a-dc87-4925-8ced-895291301c33
+		summarizeBy: sum
+		sourceColumn: dep_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column sched_dep_time
+		dataType: int64
+		formatString: 0
+		lineageTag: 3df44883-8706-4a79-bf7b-6b596d3c38a8
+		summarizeBy: sum
+		sourceColumn: sched_dep_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column dep_delay
+		dataType: int64
+		formatString: 0
+		lineageTag: 33fe0ed2-589f-4b9a-abf0-8be18d052849
+		summarizeBy: sum
+		sourceColumn: dep_delay
+
+		annotation SummarizationSetBy = Automatic
+
+	column arr_time
+		dataType: int64
+		formatString: 0
+		lineageTag: 2dd658c8-360e-40c5-ba9a-bfc05fce0b83
+		summarizeBy: sum
+		sourceColumn: arr_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column sched_arr_time
+		dataType: int64
+		formatString: 0
+		lineageTag: d501655f-854e-41a1-905b-7fbd2c6329f6
+		summarizeBy: sum
+		sourceColumn: sched_arr_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column arr_delay
+		dataType: int64
+		formatString: 0
+		lineageTag: 31d1a249-bacc-49d3-91f3-5787b5a5217a
+		summarizeBy: sum
+		sourceColumn: arr_delay
+
+		annotation SummarizationSetBy = Automatic
+
+	column carrier
+		dataType: string
+		lineageTag: bfdad1a1-3482-48b1-b621-7afe7b5c1578
+		summarizeBy: none
+		sourceColumn: carrier
+
+		annotation SummarizationSetBy = Automatic
+
+	column flight
+		dataType: int64
+		formatString: 0
+		lineageTag: 21e9eb42-dd7c-4c49-b448-c9acf422d135
+		summarizeBy: sum
+		sourceColumn: flight
+
+		annotation SummarizationSetBy = Automatic
+
+	column tailnum
+		dataType: string
+		lineageTag: dd3bafa6-e7d5-4919-95d3-55503b4be683
+		summarizeBy: none
+		sourceColumn: tailnum
+
+		annotation SummarizationSetBy = Automatic
+
+	column origin
+		dataType: string
+		lineageTag: ce28b95a-c741-4874-951e-66a425a28116
+		summarizeBy: none
+		sourceColumn: origin
+
+		annotation SummarizationSetBy = Automatic
+
+	column dest
+		dataType: string
+		lineageTag: b3b7154b-35c1-4480-bb43-6293d47c6253
+		summarizeBy: none
+		sourceColumn: dest
+
+		annotation SummarizationSetBy = Automatic
+
+	column air_time
+		dataType: int64
+		formatString: 0
+		lineageTag: 49d7435b-a382-480d-b6c5-665987138ee6
+		summarizeBy: sum
+		sourceColumn: air_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column distance
+		dataType: int64
+		formatString: 0
+		lineageTag: 906bf8e5-e0c6-48fe-818b-37b97bbc6e32
+		summarizeBy: sum
+		sourceColumn: distance
+
+		annotation SummarizationSetBy = Automatic
+
+	column hour
+		dataType: int64
+		formatString: 0
+		lineageTag: 2fbd802c-66b0-4de2-9a22-aa197bdb2453
+		summarizeBy: sum
+		sourceColumn: hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column minute
+		dataType: int64
+		formatString: 0
+		lineageTag: 6527bbf5-3916-4d8f-a1df-d079c3e856af
+		summarizeBy: sum
+		sourceColumn: minute
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_hour
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ebb0dfaa-98f5-424a-b059-ddaab6801b35
+		summarizeBy: none
+		sourceColumn: time_hour
+
+		variation Variation
+			isDefault
+			relationship: 47fd143e-6187-4c9d-8948-8523ed5efb88
+			defaultHierarchy: LocalDateTable_6dd7dec3-37aa-48fa-a8d7-2b20be6f23e1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DoW = FORMAT(nyc_flights_fixed[time_hour], "dddd")
+		lineageTag: a3a867a4-f4d1-4c55-a55a-171bff6131dc
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order DoW' = WEEKDAY(nyc_flights_fixed[time_hour], 2)
+		formatString: 0
+		lineageTag: f992b20f-93c6-4a2f-98ad-53e78635836d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name' = FORMAT(nyc_flights_fixed[time_hour], "mmmm")
+		lineageTag: e91fcf1a-85bf-47bf-895c-e174842e00d7
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Flight Date' =
+			
+			DATE(
+			    nyc_flights_fixed[year],
+			    nyc_flights_fixed[month],
+			    nyc_flights_fixed[day]
+			)
+		formatString: Short Date
+		lineageTag: 398665c4-f7c0-447d-bd35-edea93c5cc3c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nyc_flights_fixed = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Camilo.Rivas\Downloads\nyc_flights_fixed.csv"),[Delimiter=",", Columns=20, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"", Int64.Type}, {"year", Int64.Type}, {"month", Int64.Type}, {"day", Int64.Type}, {"dep_time", Int64.Type}, {"sched_dep_time", Int64.Type}, {"dep_delay", Int64.Type}, {"arr_time", Int64.Type}, {"sched_arr_time", Int64.Type}, {"arr_delay", Int64.Type}, {"carrier", type text}, {"flight", Int64.Type}, {"tailnum", type text}, {"origin", type text}, {"dest", type text}, {"air_time", Int64.Type}, {"distance", Int64.Type}, {"hour", Int64.Type}, {"minute", Int64.Type}, {"time_hour", type datetime}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

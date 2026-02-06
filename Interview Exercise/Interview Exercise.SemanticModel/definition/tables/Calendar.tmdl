@@ -1,0 +1,78 @@
+table Calendar
+	lineageTag: 5a973e75-e1ee-4447-a159-65a023db4f2d
+
+	column Date
+		formatString: General Date
+		lineageTag: cab57662-401e-419b-beee-7a5daeb6b074
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 0968b7c4-12ac-4265-9a2f-d7c7a7aa454f
+			defaultHierarchy: LocalDateTable_cf83bcf4-baea-4c8d-880c-fd5ac56815e8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: aff515f9-ff80-453c-8e66-69b705c256a6
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: 7ddde9f4-9109-4dea-adea-2b974e31dbbf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNum
+		formatString: 0
+		lineageTag: bd400940-1708-4d1d-9068-97d58d0f0003
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [MonthNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		formatString: 0
+		lineageTag: 16615b6e-7ad7-46a8-b4ef-a7747eb367bb
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Day]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeek
+		lineageTag: 4e5d84f4-60d4-4af1-aa0a-aba3cf9d15aa
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DayOfWeek]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendar = calculated
+		mode: import
+		source =
+				
+				ADDCOLUMNS(
+				    CALENDAR(
+				        DATE(2013,1,1),
+				        DATE(2013,12,31)
+				    ),
+				    "Year", YEAR([Date]),
+				    "Month", FORMAT([Date], "MMMM"),
+				    "MonthNum", MONTH([Date]),
+				    "Day", DAY([Date]),
+				    "DayOfWeek", FORMAT([Date], "dddd")
+				)
+
+	annotation PBI_Id = 235d143313a043c0849ce388027c5b79
+

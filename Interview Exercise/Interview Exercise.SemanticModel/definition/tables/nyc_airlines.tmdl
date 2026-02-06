@@ -1,0 +1,51 @@
+table nyc_airlines
+	lineageTag: a2f9286e-e008-417d-a960-486145b4aa0f
+
+	measure 'Distinct Destinations' = DISTINCTCOUNT(nyc_flights_fixed[dest])
+		formatString: 0
+		lineageTag: ceff0f3b-c012-49c5-8e98-a233e3263e97
+
+	measure 'Avg Distinct Destinations per Day' =
+			
+			ROUND(
+			    AVERAGEX(
+			        VALUES(nyc_flights_fixed[time_hour]),
+			        [Distinct Destinations])
+			    ,
+			    0
+			)
+		lineageTag: 511d8ef3-eb72-4b9d-a7db-dda8130b1bfd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Carrier
+		dataType: string
+		lineageTag: 3f7a1ceb-df47-432c-bd6a-9ff5397155db
+		summarizeBy: none
+		sourceColumn: Carrier
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 826ff8a0-5188-4269-8899-2b85d9a7339e
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition nyc_airlines = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Camilo.Rivas\Downloads\nyc_airlines.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Column1", "Carrier"}, {"Column2", "Name"}}),
+				    #"Removed Top Rows" = Table.Skip(#"Renamed Columns",1)
+				in
+				    #"Removed Top Rows"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
